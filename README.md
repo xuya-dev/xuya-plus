@@ -138,18 +138,19 @@ xuya-plus
 │   └── dev/xuya/system
 │       ├── domain/                        实体（16 表）
 │       ├── mapper/                        Mapper
-│       ├── dto/                           SysUserForm、RouterVo
-│       ├── service/                       聚合写服务 + DictDataHook（CrudHook 示例）
+│       ├── domain/bo/                     业务对象入参（SysUserBo）
+│       ├── domain/vo/                     展示对象出参（RouterVo）
+│       ├── service/                       Service 接口 + Impl 实现 + DictDataHook（CrudHook 示例）
 │       └── framework/                     框架 SPI 实现
 │           ├── security/                  RbacCacheService、StpInterfaceImpl、数据权限、参数缓存
 │           ├── translate/                 DbDictLoader（sys_dict_data 全量供缓存）
 │           └── log/                       操作日志 Sink（写 sys_oper_log）、登录日志
-└── xuya-admin                             Web 服务入口
+└── xuya-admin                             Web 服务入口（分层：Controller → Service → Mapper）
     ├── src/main/java/dev/xuya
     │   ├── XuyaPlusApplication.java       启动类（@MapperScan dev.xuya.system.mapper）
     │   └── web/
     │       ├── controller/auth|system|monitor/   认证 / 系统管理 / 监控 Controller
-    │       ├── dto/                       LoginBody
+    │       ├── domain/                     LoginBody 登录对象
     │       └── service/                   AuthService、CaptchaService
     └── src/main/resources/application.yml 主配置
 ```
