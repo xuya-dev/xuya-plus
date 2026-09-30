@@ -1,4 +1,4 @@
-package dev.xuya.common.core.serialize;
+package dev.xuya.common.sensitive.serialize;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.BeanProperty;
@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.ContextualSerializer;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import dev.xuya.common.core.annotation.Sensitive;
-import dev.xuya.common.core.enumeration.SensitiveStrategy;
+import dev.xuya.common.sensitive.annotation.Sensitive;
+import dev.xuya.common.sensitive.enumeration.SensitiveStrategy;
 
 import java.io.IOException;
 

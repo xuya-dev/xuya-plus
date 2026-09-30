@@ -1,8 +1,8 @@
-package dev.xuya.common.redis.aspect;
+package dev.xuya.common.ratelimiter.aspect;
 
 import cn.dev33.satoken.stp.StpUtil;
-import dev.xuya.common.redis.annotation.RateLimiter;
-import dev.xuya.common.redis.enumeration.LimitType;
+import dev.xuya.common.ratelimiter.annotation.RateLimiter;
+import dev.xuya.common.ratelimiter.enumeration.LimitType;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

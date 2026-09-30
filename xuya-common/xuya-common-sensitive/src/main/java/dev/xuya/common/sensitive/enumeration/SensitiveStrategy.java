@@ -1,4 +1,4 @@
-package dev.xuya.common.core.enumeration;
+package dev.xuya.common.sensitive.enumeration;
 
 /**
  * 脱敏策略：正则匹配 + 替换模板

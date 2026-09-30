@@ -1,6 +1,6 @@
-package dev.xuya.common.redis.annotation;
+package dev.xuya.common.ratelimiter.annotation;
 
-import dev.xuya.common.redis.enumeration.LimitType;
+import dev.xuya.common.ratelimiter.enumeration.LimitType;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

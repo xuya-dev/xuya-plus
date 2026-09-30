@@ -1,4 +1,4 @@
-package dev.xuya.common.redis.enumeration;
+package dev.xuya.common.ratelimiter.enumeration;
 
 /**
  * 限流维度

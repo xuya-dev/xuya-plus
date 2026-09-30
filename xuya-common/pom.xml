@@ -19,5 +19,11 @@
         <module>xuya-common-core</module>
         <module>xuya-common-oss</module>
         <module>xuya-common-redis</module>
+        <module>xuya-common-sensitive</module>
+        <module>xuya-common-ratelimiter</module>
+        <module>xuya-common-mail</module>
+        <module>xuya-common-sms</module>
+        <module>xuya-common-encrypt</module>
+        <module>xuya-common-web</module>
     </modules>
 </project>

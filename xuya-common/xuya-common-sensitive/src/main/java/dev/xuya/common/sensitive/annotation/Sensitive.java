@@ -1,9 +1,9 @@
-package dev.xuya.common.core.annotation;
+package dev.xuya.common.sensitive.annotation;
 
 import com.fasterxml.jackson.annotation.JacksonAnnotationsInside;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import dev.xuya.common.core.serialize.SensitiveJsonSerializer;
-import dev.xuya.common.core.enumeration.SensitiveStrategy;
+import dev.xuya.common.sensitive.serialize.SensitiveJsonSerializer;
+import dev.xuya.common.sensitive.enumeration.SensitiveStrategy;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

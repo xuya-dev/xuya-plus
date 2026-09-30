@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>dev.xuya</groupId>
+        <artifactId>xuya-common</artifactId>
+        <version>1.1.0</version>
+    </parent>
+
+    <artifactId>xuya-common-sensitive</artifactId>
+    <name>XuYa Common Sensitive</name>
+    <description>数据脱敏：@Sensitive 注解 + 策略枚举 + Jackson 序列化器</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+    </dependencies>
+</project>
