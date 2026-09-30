@@ -9,7 +9,7 @@ import dev.xuya.core.common.QuickDevException;
 import cn.dev33.satoken.stp.StpUtil;
 import dev.xuya.core.common.R;
 import dev.xuya.core.log.QuickLog;
-import dev.xuya.system.dto.SysUserForm;
+import dev.xuya.system.domain.bo.SysUserBo;
 import dev.xuya.system.domain.SysUser;
 import dev.xuya.system.service.UserService;
 import jakarta.validation.Valid;
@@ -45,7 +45,7 @@ public class SysUserController {
     @RequiresPerm("sys:user:add")
     @QuickLog(module = "用户管理", description = "新增用户")
     @PostMapping
-    public R<Void> save(@Valid @RequestBody SysUserForm form) {
+    public R<Void> save(@Valid @RequestBody SysUserBo form) {
         userService.createUser(form);
         return R.ok();
     }
@@ -53,7 +53,7 @@ public class SysUserController {
     @RequiresPerm("sys:user:edit")
     @QuickLog(module = "用户管理", description = "修改用户")
     @PutMapping
-    public R<Void> update(@Valid @RequestBody SysUserForm form) {
+    public R<Void> update(@Valid @RequestBody SysUserBo form) {
         userService.updateUser(form);
         return R.ok();
     }
@@ -101,7 +101,7 @@ public class SysUserController {
     @RequiresLogin
     @QuickLog(module = "个人中心", description = "修改资料")
     @PutMapping("/profile")
-    public R<Void> profile(@RequestBody SysUserForm form) {
+    public R<Void> profile(@RequestBody SysUserBo form) {
         Long userId = StpUtil.getLoginIdAsLong();
         userService.updateProfile(userId, form);
         return R.ok();

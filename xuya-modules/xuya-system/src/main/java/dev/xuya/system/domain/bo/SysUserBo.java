@@ -1,4 +1,4 @@
-package dev.xuya.system.dto;
+package dev.xuya.system.domain.bo;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -7,10 +7,10 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 用户表单体（密码仅在此接收，实体 password 已 @JsonIgnore）
+ * 用户业务对象（BO）（密码仅在此接收，实体 password 已 @JsonIgnore）
  */
 @Data
-public class SysUserForm {
+public class SysUserBo {
 
     private Long id;
 

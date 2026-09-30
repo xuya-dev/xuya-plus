@@ -1,4 +1,4 @@
-package dev.xuya.web.dto;
+package dev.xuya.web.domain;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

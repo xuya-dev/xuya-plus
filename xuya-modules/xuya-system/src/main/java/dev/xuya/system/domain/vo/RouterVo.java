@@ -1,4 +1,4 @@
-package dev.xuya.system.dto;
+package dev.xuya.system.domain.vo;
 
 import lombok.Data;
 
