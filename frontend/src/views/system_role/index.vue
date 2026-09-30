@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import CrudTable from '@/components/crud-table/index.vue';
-import { userService } from '@/service/api/system';
+import { roleService } from '@/service/api/system';
 
 const config = {
-  title: '用户管理',
-  api: userService,
-  defaultForm: { status: 0 },
+  title: '角色管理',
+  api: roleService,
+  defaultForm: { status: 0, roleSort: 0 },
   columns: [
     { key: 'id', title: 'ID', width: 60, hidden: true },
-    { key: 'username', title: '用户名', search: true, form: 'input' },
-    { key: 'nickname', title: '昵称', form: 'input' },
-    { key: 'deptName', title: '部门' },
-    { key: 'phone', title: '手机号', form: 'input' },
-    { key: 'email', title: '邮箱', form: 'input' },
+    { key: 'roleName', title: '角色名称', search: true, form: 'input' },
+    { key: 'roleKey', title: '权限字符', form: 'input' },
+    { key: 'roleSort', title: '排序', form: 'number' },
     { key: 'status', title: '状态', type: 'tag-success' as const, form: 'select' as const, formOptions: [{ label: '正常', value: 0 }, { label: '停用', value: 1 }] },
     { key: 'createTime', title: '创建时间', type: 'datetime' as const },
   ],

@@ -85,6 +85,52 @@ export const generatedRoutes: GeneratedRoute[] = [
     },
     children: [
       {
+        name: 'system_config',
+        path: '/system/config',
+        meta: {
+          title: 'system_config',
+          i18nKey: 'route.system_config'
+        },
+        children: [
+          {
+            name: 'system_config_data',
+            path: '/system/config/data',
+            component: 'view.system_config_data',
+            meta: {
+              title: 'system_config_data',
+              i18nKey: 'route.system_config_data'
+            }
+          }
+        ]
+      },
+      {
+        name: 'system_notice',
+        path: '/system/notice',
+        component: 'view.system_notice',
+        meta: {
+          title: 'system_notice',
+          i18nKey: 'route.system_notice'
+        }
+      },
+      {
+        name: 'system_post',
+        path: '/system/post',
+        component: 'view.system_post',
+        meta: {
+          title: 'system_post',
+          i18nKey: 'route.system_post'
+        }
+      },
+      {
+        name: 'system_role',
+        path: '/system/role',
+        component: 'view.system_role',
+        meta: {
+          title: 'system_role',
+          i18nKey: 'route.system_role'
+        }
+      },
+      {
         name: 'system_user',
         path: '/system/user',
         component: 'view.system_user',
