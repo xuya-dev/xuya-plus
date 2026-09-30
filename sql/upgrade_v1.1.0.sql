@@ -127,6 +127,7 @@ INSERT INTO sys_menu (id, menu_name, parent_id, order_num, path, component, menu
 
 -- 缓存监控补按钮：键删除
 INSERT INTO sys_menu (id, menu_name, parent_id, order_num, path, component, menu_type, perms, icon, visible, status, create_time) VALUES
+(132, '首页看板', 2, 7, 'dashboard', 'monitor/dashboard/index', 'C', 'sys:dashboard', 'dashboard', '0', 0, NOW()),
 (1112, '键删除', 111, 2, '', NULL, 'F', 'sys:cache:remove', '#', '0', 0, NOW());
 
 -- 调度任务示例目标 Bean 由应用内置（JobDemoTask），无需额外授权

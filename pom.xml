@@ -85,6 +85,36 @@
             </dependency>
             <dependency>
                 <groupId>dev.xuya</groupId>
+                <artifactId>xuya-common-sensitive</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.xuya</groupId>
+                <artifactId>xuya-common-ratelimiter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.xuya</groupId>
+                <artifactId>xuya-common-mail</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.xuya</groupId>
+                <artifactId>xuya-common-sms</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.xuya</groupId>
+                <artifactId>xuya-common-encrypt</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.xuya</groupId>
+                <artifactId>xuya-common-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.xuya</groupId>
                 <artifactId>quick-dev-codegen</artifactId>
                 <version>0.4.0</version>
             </dependency>

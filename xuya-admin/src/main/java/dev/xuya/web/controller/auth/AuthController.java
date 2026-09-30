@@ -1,7 +1,7 @@
 package dev.xuya.web.controller.auth;
 
-import dev.xuya.common.redis.annotation.RateLimiter;
-import dev.xuya.common.redis.enumeration.LimitType;
+import dev.xuya.common.ratelimiter.annotation.RateLimiter;
+import dev.xuya.common.ratelimiter.enumeration.LimitType;
 import dev.xuya.core.auth.RequiresLogin;
 import dev.xuya.core.auth.NoRepeatSubmit;
 import dev.xuya.core.common.R;
