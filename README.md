@@ -130,10 +130,16 @@ RuoYi-Vue-Plus 风格多模块，包根 `dev.xuya`：
 ```
 xuya-plus
 ├── sql/xuya_plus.sql                      建库 + 16 表 + 种子数据
-├── xuya-common                            通用模块（领域无关）
-│   └── dev/xuya/common
-│       ├── util/                          IpUtil
-│       └── redis/                         在线用户注册表（Redis）
+├── xuya-common                            公共模块聚合（9 子模块，对齐 RuoYi-Vue-Plus）
+│   ├── xuya-common-core                   核心工具（IpUtil）
+│   ├── xuya-common-oss                    对象存储 SPI（Local + S3 协议）
+│   ├── xuya-common-redis                  在线用户注册表（Redis）
+│   ├── xuya-common-sensitive              数据脱敏（@Sensitive + 5 策略）
+│   ├── xuya-common-ratelimiter            接口限流（@RateLimiter + Redis 切面）
+│   ├── xuya-common-mail                   邮件发送（spring-mail 封装）
+│   ├── xuya-common-sms                    短信 SPI（用户实现运营商）
+│   ├── xuya-common-encrypt                字段加密（AES-256-GCM + @EncryptField）
+│   └── xuya-common-web                    Web 公共（XSS 过滤 + TraceId MDC）
 ├── xuya-modules/xuya-system               系统模块
 │   └── dev/xuya/system
 │       ├── domain/                        实体（16 表）
