@@ -88,7 +88,7 @@ CREATE TABLE sys_job_log (
 -- OSS 配置种子：本地存储（使用中）+ MinIO（真实联调环境，随用随切）
 INSERT INTO sys_oss_config (id, config_key, config_name, access_key, secret_key, bucket_name, endpoint, domain, region, storage_path, status, remark, create_time) VALUES
 (1, 'local', '本地存储', '', '', '', '', '', '', './uploads', 1, '本地磁盘存储（开发/单机）', NOW()),
-(2, 'minio', 'MinIO',   'vaulthive', 'vaulthive123', 'xuya-plus', 'http://localhost:9000', '', '', '', 0, 'WSL MinIO 对象存储', NOW());
+(2, 'minio', 'MinIO',   'vaulthive', 'vaulthive123', 'xuya-plus', 'http://172.19.237.68:9000', '', '', '', 0, 'WSL MinIO 对象存储', NOW());
 
 -- 定时任务示例（演示 JobInvokeUtil 反射调用，任务组 DEFAULT）
 INSERT INTO sys_job (id, job_name, job_group, invoke_target, cron_expression, concurrent, status, remark, create_time) VALUES

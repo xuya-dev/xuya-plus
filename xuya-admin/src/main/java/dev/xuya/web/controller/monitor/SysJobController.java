@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
@@ -34,7 +35,7 @@ public class SysJobController {
     @RequiresPerm("sys:job:add")
     @QuickLog(module = "任务调度", description = "新增任务")
     @PostMapping
-    public R<Void> add(SysJob job) {
+    public R<Void> add(@RequestBody SysJob job) {
         jobService.createJob(job);
         return R.ok();
     }
@@ -42,7 +43,7 @@ public class SysJobController {
     @RequiresPerm("sys:job:edit")
     @QuickLog(module = "任务调度", description = "修改任务")
     @PutMapping
-    public R<Void> edit(SysJob job) {
+    public R<Void> edit(@RequestBody SysJob job) {
         jobService.updateJob(job);
         return R.ok();
     }
