@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>dev.xuya</groupId>
+        <artifactId>xuya-plus</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>xuya-common</artifactId>
+    <name>XuYa Common</name>
+    <description>通用模块：工具类与领域无关组件（在线用户等）</description>
+
+    <dependencies>
+        <!-- Quick-Dev：core + 自动配置 + web + validation + Sa-Token + MyBatis-Plus + 分页 + FastExcel -->
+        <dependency>
+            <groupId>dev.xuya</groupId>
+            <artifactId>quick-dev-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- Quick-Dev 可选 Redis 支持：Sa-Token 登录态入 Redis + 防重复提交原子实现 -->
+        <dependency>
+            <groupId>dev.xuya</groupId>
+            <artifactId>quick-dev-redis-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- 工具库：JSON 等 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+    </dependencies>
+</project>

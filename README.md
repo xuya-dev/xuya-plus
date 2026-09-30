@@ -125,18 +125,31 @@ GET  /auth/routers            前端动态路由（RuoYi 风格 RouterVo 树）
 
 ## 目录结构
 
+RuoYi-Vue-Plus 风格多模块，包根 `dev.xuya`：
+
 ```
 xuya-plus
-├── sql/xuya_plus.sql                  建库 + 16 表 + 种子数据
-└── src/main/java/com/xuya/plus
-    ├── XuyaPlusApplication.java
-    ├── auth/                          认证（controller / service / dto）
-    ├── framework/                     框架 SPI 对接
-    │   ├── security/                  RbacCacheService、StpInterface、数据权限、参数缓存
-    │   ├── translate/                 DbDictLoader
-    │   ├── log/                       操作日志 Sink、登录日志
-    │   └── monitor/                   在线用户
-    ├── monitor/controller/            /sys-online、/sys-cache
-    ├── system/                        实体 / Mapper / Service / Controller
-    └── common/util/                   IP 工具
+├── sql/xuya_plus.sql                      建库 + 16 表 + 种子数据
+├── xuya-common                            通用模块（领域无关）
+│   └── dev/xuya/common
+│       ├── util/                          IpUtil
+│       └── redis/                         在线用户注册表（Redis）
+├── xuya-modules/xuya-system               系统模块
+│   └── dev/xuya/system
+│       ├── domain/                        实体（16 表）
+│       ├── mapper/                        Mapper
+│       ├── dto/                           SysUserForm、RouterVo
+│       ├── service/                       聚合写服务 + DictDataHook（CrudHook 示例）
+│       └── framework/                     框架 SPI 实现
+│           ├── security/                  RbacCacheService、StpInterfaceImpl、数据权限、参数缓存
+│           ├── translate/                 DbDictLoader（sys_dict_data 全量供缓存）
+│           └── log/                       操作日志 Sink（写 sys_oper_log）、登录日志
+└── xuya-admin                             Web 服务入口
+    ├── src/main/java/dev/xuya
+    │   ├── XuyaPlusApplication.java       启动类（@MapperScan dev.xuya.system.mapper）
+    │   └── web/
+    │       ├── controller/auth|system|monitor/   认证 / 系统管理 / 监控 Controller
+    │       ├── dto/                       LoginBody
+    │       └── service/                   AuthService、CaptchaService
+    └── src/main/resources/application.yml 主配置
 ```

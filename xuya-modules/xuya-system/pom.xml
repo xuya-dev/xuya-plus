@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>dev.xuya</groupId>
+        <artifactId>xuya-plus</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>xuya-system</artifactId>
+    <name>XuYa System</name>
+    <description>系统模块：领域模型（domain）、Mapper、Service 与框架 SPI 实现（权限数据源/字典加载器/日志落地/数据权限）</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>dev.xuya</groupId>
+            <artifactId>xuya-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+</project>
