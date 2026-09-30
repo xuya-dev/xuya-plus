@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.7</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>dev.xuya</groupId>
+    <artifactId>xuya-plus</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>XuYa Plus</name>
+    <description>RuoYi-Vue-Plus 同款后台管理脚手架，基于 Quick-Dev（注解式 CRUD + Sa-Token + Redis）</description>
+    <url>https://github.com/xuya-dev</url>
+
+    <properties>
+        <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <quick-dev.version>0.2.0</quick-dev.version>
+        <hutool.version>5.8.38</hutool.version>
+        <springdoc.version>2.8.17</springdoc.version>
+    </properties>
+
+    <dependencies>
+        <!-- Quick-Dev：core + 自动配置 + web + validation + Sa-Token + MyBatis-Plus + 分页 + FastExcel -->
+        <dependency>
+            <groupId>dev.xuya</groupId>
+            <artifactId>quick-dev-spring-boot-starter</artifactId>
+            <version>${quick-dev.version}</version>
+        </dependency>
+        <!-- Quick-Dev 可选 Redis 支持：Sa-Token 登录态入 Redis + 防重复提交原子实现 -->
+        <dependency>
+            <groupId>dev.xuya</groupId>
+            <artifactId>quick-dev-redis-spring-boot-starter</artifactId>
+            <version>${quick-dev.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- MySQL 驱动 -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- 工具库：BCrypt 密码、图形验证码、JSON 等 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+
+        <!-- OpenAPI 文档：引入后框架动态 CRUD 端点自动出现在 Swagger UI -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>xuya-plus</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

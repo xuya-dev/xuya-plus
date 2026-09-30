@@ -1,0 +1,78 @@
+# ==========================================================================
+# XuYa Plus —— RuoYi-Vue-Plus 同款后台管理脚手架（基于 Quick-Dev 框架）
+#
+# 激活方式：默认 dev，生产用 --spring.profiles.active=prod 覆盖
+# 敏感信息统一走环境变量，文件里只放本地默认值
+# ==========================================================================
+server:
+  port: 8080
+
+spring:
+  application:
+    name: xuya-plus
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:xuya_plus}?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:root}
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1
+
+  # Redis：Sa-Token 登录态、防重复提交、验证码、在线用户（WSL Docker）
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      database: ${REDIS_DATABASE:0}
+      # password: ${REDIS_PASSWORD:}
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+    db-config:
+      # 逻辑删除：del_flag 0=存在 2=删除，框架的查询/删除自动生效
+      logic-delete-field: delFlag
+      logic-delete-value: 2
+      logic-not-delete-value: 0
+
+# Sa-Token：token 从 Authorization 请求头读写（自动剥离 Bearer 前缀），与框架鉴权拦截器一致
+sa-token:
+  token-name: Authorization
+  timeout: 2592000        # 30 天
+  is-concurrent: true
+  is-log: false
+
+quick-dev:
+  enabled: true
+  db-type: mysql
+  # 生产建议 false：未预期异常只返回"系统繁忙"
+  error-detail: true
+  log:
+    enabled: true
+    # 落地方式由 DbOperationLogSink 决定（写 sys_oper_log；0.2.0 起无内置异步装饰器，
+    # 需要异步/批量请在该 Sink 内自行实现）
+  dict:
+    # 字典全量内存缓存由框架管理：DbDictLoader 提供 sys_dict_data 数据，
+    # 定时全量刷新兜底（系统管理的字典接口在变更后会主动刷新）
+    refresh-interval-seconds: 60
+
+xuya-plus:
+  # rbac/config 内存缓存的定时全量刷新秒数（兜底多实例最终一致；变更接口会主动刷新）
+  cache-auto-refresh-seconds: 60
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    dev.xuya: info
+    com.xuya.plus: info
