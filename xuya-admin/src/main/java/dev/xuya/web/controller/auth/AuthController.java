@@ -1,9 +1,12 @@
 package dev.xuya.web.controller.auth;
 
+import dev.xuya.common.redis.annotation.RateLimiter;
+import dev.xuya.common.redis.enumeration.LimitType;
 import dev.xuya.core.auth.RequiresLogin;
 import dev.xuya.core.auth.NoRepeatSubmit;
 import dev.xuya.core.common.R;
 import dev.xuya.web.domain.LoginBody;
+import dev.xuya.web.domain.RegisterBody;
 import dev.xuya.system.domain.vo.RouterVo;
 import dev.xuya.web.service.AuthService;
 import dev.xuya.web.service.CaptchaService;
@@ -48,10 +51,23 @@ public class AuthController {
     /**
      * 登录：成功返回 tokenName/tokenValue/expireIn，后续请求放到 Authorization 头
      */
+    @RateLimiter(time = 60, count = 30, limitType = LimitType.IP,
+            message = "登录尝试过于频繁，请稍后再试")
     @NoRepeatSubmit(interval = 2000)
     @PostMapping("/login")
     public R<Map<String, Object>> login(@Valid @RequestBody LoginBody body, HttpServletRequest request) {
         return R.ok(authService.login(body, request));
+    }
+
+    /**
+     * 注册新用户（sys.account.registerUser=true 时开放；默认绑定普通角色）
+     */
+    @RateLimiter(time = 60, count = 10, limitType = LimitType.IP,
+            message = "注册尝试过于频繁，请稍后再试")
+    @PostMapping("/register")
+    public R<String> register(@RequestBody RegisterBody body) {
+        authService.register(body);
+        return R.ok("注册成功");
     }
 
     /**

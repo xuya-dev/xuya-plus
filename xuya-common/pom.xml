@@ -7,33 +7,17 @@
     <parent>
         <groupId>dev.xuya</groupId>
         <artifactId>xuya-plus</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
     </parent>
 
     <artifactId>xuya-common</artifactId>
+    <packaging>pom</packaging>
     <name>XuYa Common</name>
-    <description>通用模块：工具类与领域无关组件（在线用户等）</description>
+    <description>公共模块聚合：core（工具/常量）、oss（对象存储）、redis（在线用户/限流）</description>
 
-    <dependencies>
-        <!-- Quick-Dev：core + 自动配置 + web + validation + Sa-Token + MyBatis-Plus + 分页 + FastExcel -->
-        <dependency>
-            <groupId>dev.xuya</groupId>
-            <artifactId>quick-dev-spring-boot-starter</artifactId>
-        </dependency>
-        <!-- Quick-Dev 可选 Redis 支持：Sa-Token 登录态入 Redis + 防重复提交原子实现 -->
-        <dependency>
-            <groupId>dev.xuya</groupId>
-            <artifactId>quick-dev-redis-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
-        <!-- 工具库：JSON 等 -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>xuya-common-core</module>
+        <module>xuya-common-oss</module>
+        <module>xuya-common-redis</module>
+    </modules>
 </project>

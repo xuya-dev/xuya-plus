@@ -7,7 +7,7 @@
     <parent>
         <groupId>dev.xuya</groupId>
         <artifactId>xuya-plus</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
     </parent>
 
     <artifactId>xuya-admin</artifactId>
@@ -18,6 +18,12 @@
         <dependency>
             <groupId>dev.xuya</groupId>
             <artifactId>xuya-system</artifactId>
+        </dependency>
+        <!-- 代码生成后端：复用 quick-dev-codegen 的生成内核 -->
+        <dependency>
+            <groupId>dev.xuya</groupId>
+            <artifactId>quick-dev-codegen</artifactId>
+            <version>0.4.0</version>
         </dependency>
 
         <!-- OpenAPI 文档：引入后框架动态 CRUD 端点自动出现在 Swagger UI -->

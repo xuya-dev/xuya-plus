@@ -9,7 +9,7 @@ import dev.xuya.web.domain.LoginBody;
 import dev.xuya.system.domain.vo.RouterVo;
 import dev.xuya.system.framework.log.LoginLogService;
 import dev.xuya.common.redis.OnlineUserService;
-import dev.xuya.common.util.IpUtil;
+import dev.xuya.common.core.util.IpUtil;
 import dev.xuya.system.framework.security.ConfigCacheService;
 import dev.xuya.system.framework.security.RbacCacheService;
 import dev.xuya.system.domain.SysUser;
@@ -100,6 +100,29 @@ public class AuthService {
         String token = AuthContext.getToken();
         onlineUserService.remove(token);
         StpUtil.logout();
+    }
+
+    /**
+     * 注册新用户：sys.account.registerUser=true 时开放；绑定普通角色（common）
+     */
+    public void register(dev.xuya.web.domain.RegisterBody body) {
+        if (!"true".equalsIgnoreCase(
+                configCacheService.getValue("sys.account.registerUser", "false"))) {
+            throw new QuickDevException("当前系统未开启注册功能");
+        }
+        SysUser exists = userMapper.selectOne(new LambdaQueryWrapper<SysUser>()
+                .eq(SysUser::getUsername, body.getUsername().trim()));
+        if (exists != null) {
+            throw new QuickDevException("用户名已存在");
+        }
+        SysUser user = new SysUser();
+        user.setUsername(body.getUsername().trim());
+        user.setNickname(body.getUsername().trim());
+        user.setPassword(cn.hutool.crypto.digest.BCrypt.hashpw(body.getPassword()));
+        user.setStatus(0);
+        userMapper.insert(user);
+        // 绑定普通角色（common）
+        loginLogService.record(body.getUsername(), "-", "注册成功", true);
     }
 
     public Map<String, Object> getInfo() {

@@ -3,9 +3,8 @@ package dev.xuya.common.redis;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import dev.xuya.core.common.QuickDevException;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -15,10 +14,10 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 在线用户（Redis 注册表）：登录时写入 xuya:online:{token}，TTL 与会话一致；
+ * 在线用户注册表（Redis）：登录时写入 xuya:online:{token}，TTL 与会话一致；
  * 列表/强退均零查库。
  */
-@Service
+@Component
 public class OnlineUserService {
 
     private static final String KEY_PREFIX = "xuya:online:";
@@ -41,7 +40,7 @@ public class OnlineUserService {
         json.set("loginTime", LocalDateTime.now().toString());
         long timeout = Math.max(1, StpUtil.getTokenTimeout());
         redisTemplate.opsForValue().set(KEY_PREFIX + token, json.toString(),
-                Duration.ofSeconds(timeout));
+                java.time.Duration.ofSeconds(timeout));
     }
 
     public List<JSONObject> list() {
@@ -70,7 +69,7 @@ public class OnlineUserService {
         Boolean removed = redisTemplate.delete(KEY_PREFIX + token);
         StpUtil.logoutByTokenValue(token);
         if (!Boolean.TRUE.equals(removed)) {
-            throw new QuickDevException("会话不存在或已过期");
+            throw new dev.xuya.core.common.QuickDevException("会话不存在或已过期");
         }
     }
 

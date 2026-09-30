@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import dev.xuya.common.core.annotation.Sensitive;
 import dev.xuya.core.annotation.QueryField;
 import dev.xuya.core.annotation.QueryType;
 import dev.xuya.core.datascope.DataScope;
@@ -52,6 +53,7 @@ public class SysUser {
 
     private String email;
 
+    @Sensitive(strategy = dev.xuya.common.core.enumeration.SensitiveStrategy.PHONE)
     private String phone;
 
     /**

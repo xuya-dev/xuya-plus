@@ -1,4 +1,4 @@
-package dev.xuya.common.util;
+package dev.xuya.common.core.util;
 
 import cn.hutool.extra.servlet.JakartaServletUtil;
 import jakarta.servlet.http.HttpServletRequest;
