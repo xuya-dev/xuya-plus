@@ -29,7 +29,7 @@
     <properties>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <quick-dev.version>0.3.0</quick-dev.version>
+        <quick-dev.version>0.4.0</quick-dev.version>
         <hutool.version>5.8.38</hutool.version>
         <springdoc.version>2.8.17</springdoc.version>
     </properties>
